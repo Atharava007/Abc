@@ -1,0 +1,116 @@
+import java.io.IOException;
+import java.io.*;
+
+abstract class Figure
+{
+    abstract double cal_area();
+    void cal_volume()
+    {};
+}
+class Square extends Figure
+{
+    int side;
+    Square(int s)
+    {
+        side=s;
+    }
+    double cal_area()
+    {
+        return side*side;
+    }
+}
+class Triangle extends Figure
+{
+    int height,base;
+    Triangle(int h,int b)
+    {
+        height=h;
+        base=b;
+    }
+    double cal_area()
+    {
+        return (0.5)*height*base;
+    }
+}
+class Rectangle extends Figure
+{
+    int width,length;
+    Rectangle(int w,int l)
+    {
+        width=w;
+        length=l;
+    }
+    double cal_area()
+    {
+        return (length*width);
+    }
+}
+class Q6
+{
+    public static void main(String args[]) throws IOException
+    {
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        int s;
+        do
+        {
+            System.out.println("Enter the side of square");
+            s=Integer.parseInt(br.readLine());
+            if(s>0)
+                break;
+            else
+                System.out.println("SIde can't be zero or negative");
+        }while(true);
+       
+         
+        Figure f;
+        f=new Square(s);
+        System.out.println("Area of Square is "+f.cal_area());
+        int h,b;
+        do
+        {
+            System.out.println("Enter the height and base of triangle");
+            h=Integer.parseInt(br.readLine());
+            
+
+            if(h>0)
+                break;
+            else
+                System.out.println("Height can't be zero or negative");
+        }while(true);
+        do
+        {
+            b=Integer.parseInt(br.readLine());
+            if(b>0)
+                break;
+            else
+                System.out.println("base can't be zero or negative");
+        }while(true);
+        
+        f=new Triangle(h,b);
+        System.out.println("Area of triangle is "+f.cal_area());
+
+
+
+        int w,l;
+        do
+        {
+            System.out.println("Enter the width and length of rectangle");
+            w=Integer.parseInt(br.readLine());
+            if(w>0)
+                break;
+            else
+                System.out.println("Width can't be zero or negative");
+        }while(true);
+        do
+        {
+            l=Integer.parseInt(br.readLine());
+            if(l>0)
+                break;
+            else
+                System.out.println("length can't be zero or negative");
+        }while(true);
+        f=new Rectangle(w,l);
+        System.out.println("Area of rectangle is "+f.cal_area());
+
+    }
+}
